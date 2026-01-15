@@ -1,0 +1,23 @@
+return {
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "ts_ls",
+        "lua_ls",
+        "biome",
+        "html",
+        "cssls",
+        "tailwindcss",
+        "emmet_ls",
+        "prismals",
+        "pyright",
+      },
+      automatic_installation = true,
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+  },
+}

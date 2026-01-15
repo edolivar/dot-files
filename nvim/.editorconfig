@@ -1,0 +1,9 @@
+[*.lua]
+indent_style = space
+indent_size = 2
+
+[*.ts, *.tsx, *.jsx]
+indent_style = space
+indent_size = 2
+
+

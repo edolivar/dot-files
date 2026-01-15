@@ -1,0 +1,9 @@
+font-family = "Lilex Nerd Font"
+font-size = 18 
+adjust-cell-height = 25%
+background = #000000
+
+window-padding-balance = true 
+window-save-state = always
+macos-titlebar-style=transparent
+window-colorspace = "display-p3"
