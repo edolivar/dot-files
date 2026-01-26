@@ -7,7 +7,7 @@ local themes = require "telescope.themes" -- 👈 add this
 local M = {}
 
 local live_multigrep = function(opts)
-  opts = themes.get_ivy(opts or {})
+  opts = themes.get_dropdown(opts or {})
   opts.cwd = opts.cwd or vim.uv.cwd()
 
   local finder = finders.new_async_job {
@@ -48,7 +48,7 @@ local live_multigrep = function(opts)
 end
 
 M.setup = function()
-  vim.keymap.set("n", "<leader>fg", live_multigrep, { desc = "Telescope Multi Grep (ivy)" })
+  vim.keymap.set("n", "<leader>fg", live_multigrep, { desc = "Telescope Multi Grep (dropdown)" })
 end
 
 return M

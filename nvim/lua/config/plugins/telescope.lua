@@ -7,10 +7,10 @@ return {
     local tele = require("telescope")
     tele.setup({
       pickers = {
-        find_files = { theme = "ivy" },
-        live_grep = { theme = "ivy" },
-        buffers = { theme = "ivy" },
-        help_tags = { theme = "ivy" },
+        find_files = { theme = "dropdown" },
+        live_grep = { theme = "dropdown" },
+        buffers = { theme = "dropdown" },
+        help_tags = { theme = "dropdown" },
       },
       extensions = {
         fzf = {},
