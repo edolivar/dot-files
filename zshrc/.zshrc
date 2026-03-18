@@ -21,9 +21,9 @@ export PATH="/opt/homebrew/bin:$HOME/.pnpm-global/bin:$PYENV_ROOT/bin:$PATH"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
-  git 
-  zsh-autosuggestions 
-  zsh-syntax-highlighting 
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
   zsh-interactive-cd
 )
 
@@ -111,7 +111,7 @@ function _auto_activate_venv() {
   # 1. ACTIVATE: If we enter a dir with .venv and it's not already active
   if [[ -d .venv || -d venv ]]; then
     local venv_path=$( [[ -d .venv ]] && echo ".venv" || echo "venv" )
-    
+
     # Only source if we aren't already in THIS specific venv
     if [[ "$VIRTUAL_ENV" != "$(pwd)/$venv_path" ]]; then
       source "$venv_path/bin/activate"

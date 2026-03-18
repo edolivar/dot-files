@@ -29,8 +29,8 @@ vim.keymap.set("n", "<M-]>",     "<cmd>cnext<CR>", { desc = "Next quickfix item"
 vim.keymap.set("n", "<M-[>",     "<cmd>cprev<CR>", { desc = "Prev quickfix item" })
 vim.keymap.set("n", "<M-o>",     "<cmd>copen<CR>", { desc = "Open quickfix window" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
-vim.keymap.set("n", "<leader>d", function() 
-    vim.diagnostic.setqflist() 
+vim.keymap.set("n", "<leader>d", function()
+    vim.diagnostic.setqflist()
 end, { desc = "Set quickfix list with diagnostics" })
 
 -- OIL.NVIM

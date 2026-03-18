@@ -15,7 +15,7 @@ return {
         -- This ensures the background is #000000 across the UI
         specs = {
           all = {
-            bg1 = '#000000', 
+            bg1 = '#000000',
             bg0 = '#000000',
           },
         },
