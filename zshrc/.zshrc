@@ -47,7 +47,7 @@ alias c='clear'
 alias vs='code .'
 alias cd='z'
 alias cdi='zi'
-
+alias gem='gemini'
 
 # Terminal/Editor (Using Bat & FZF)
 alias nv='nvim'
@@ -68,6 +68,7 @@ alias gcm='git commit -m'
 alias gp='git push'
 alias gpp='git pull'
 alias gsa='git add .'
+alias gb='git --no-pager branch -a'
 
 # PNPM
 alias pinst='pnpm i'

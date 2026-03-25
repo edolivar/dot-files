@@ -33,7 +33,18 @@ require("lazy").setup({
 })
 
 --NVIM OPTIONS
-vim.opt.shiftwidth = 4
+vim.opt.expandtab = true   -- Use spaces instead of tabs
+vim.opt.shiftwidth = 2    -- Size of an indent
+vim.opt.tabstop = 2       -- Number of spaces tabs count for
+vim.opt.softtabstop = 2   -- Number of spaces tabs count for while editing
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true
+-- 1. Enable wrapping
+vim.opt.wrap = true
+-- 2. THIS IS THE BIG ONE: It keeps the wrapped lines 
+-- aligned with the indentation of the starting line.
+vim.opt.breakindent = true
+-- 3. Prevents words from being split in the middle. 
+-- It will wait for a space/punctuation to wrap.
+vim.opt.linebreak = true
