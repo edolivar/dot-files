@@ -50,7 +50,7 @@ alias c='clear'
 alias vs='code .'
 alias cd='z'
 alias cdi='zi'
-alias gem='gemini'
+alias ai='codex'
 
 # Terminal/Editor (Using Bat & FZF)
 alias nv='nvim'
