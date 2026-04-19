@@ -48,3 +48,4 @@ vim.opt.breakindent = true
 -- 3. Prevents words from being split in the middle. 
 -- It will wait for a space/punctuation to wrap.
 vim.opt.linebreak = true
+vim.opt.autoread = true
