@@ -33,6 +33,7 @@ source $ZSH/oh-my-zsh.sh
 # ==========================================
 eval "$(zoxide init zsh)"
 eval "$(pyenv init - zsh)"
+eval "$(codex completion zsh)"
 source <(fzf --zsh)
 
 # Load p10k config if it exists
