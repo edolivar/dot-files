@@ -12,7 +12,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="nvim"
 export PYENV_ROOT="$HOME/.pyenv"
 # Path setup (Brew first, then others)
-export PATH="/opt/homebrew/bin:$HOME/.pnpm-global/bin:$PYENV_ROOT/bin:$PATH"
+export PATH="$HOME/.pnpm-global/bin:$PYENV_ROOT/bin:$PATH"
+export FZF_DEFAULT_OPTS="--cycle"
 
 # ==========================================
 # 3. OH-MY-ZSH CONFIGURATION
@@ -39,9 +40,6 @@ source <(fzf --zsh)
 # Load p10k config if it exists
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # ==========================================
 # 5. ALIASES
@@ -159,3 +157,8 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --color=border:#262626,label:#aeaeae,query:#d9d9d9
   --border="rounded" --layout="reverse" --info="right"
   --preview="bat --color=always --line-range=:500 {}"'
+
+#NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
