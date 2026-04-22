@@ -35,7 +35,8 @@ end, { desc = "Set quickfix list with diagnostics" })
 
 -- OIL.NVIM
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
+-- Definition Lookup
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP Definition' })
 -- ========================================================================== --
 --                                 AUTOCMDS                                   --
 -- ========================================================================== --
