@@ -14,8 +14,10 @@ vim.keymap.set({ "n", "v", "o" }, "l", "w", { noremap = true, desc = "Move forwa
 
 -- BUFFERS
 vim.keymap.set("n", "<leader>c", ":bdelete<CR>", { noremap = true, silent = true, desc = "Close buffer" })
-vim.keymap.set("n", "<C-[>",     ":bprev<CR>",   { noremap = true, silent = true, desc = "Prev buffer" })
-vim.keymap.set("n", "<C-]>",     ":bnext<CR>",   { noremap = true, silent = true, desc = "Next buffer" })
+-- Move the current buffer one position to the left
+vim.keymap.set("n", "<C-[>", ":BufferLineMovePrev<CR>", { noremap = true, silent = true, desc = "Move buffer left" })
+-- Move the current buffer one position to the right
+vim.keymap.set("n", "<C-]>", ":BufferLineMoveNext<CR>", { noremap = true, silent = true, desc = "Move buffer right" })
 
 -- WINDOWS & QUITTING
 vim.keymap.set("n", "<leader>q", ":qa<CR>", { desc = "Quit all" })
