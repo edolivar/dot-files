@@ -109,6 +109,20 @@ pdev() {
     done
 }
 
+# Lookup documentation
+cheat() {
+    curl -s "cheat.sh/$1"
+}
+
+_cheat_completions() {
+  local -a libraries
+  # Fetch a list of languages/libraries from cheat.sh and cache them
+  libraries=($(curl -s cheat.sh/:list))
+  _describe 'command' libraries
+}
+
+compdef _cheat_completions cheat
+
 # Auto-activate/deactivate .venv based on directory
 function _auto_activate_venv() {
   # 1. ACTIVATE: If we enter a dir with .venv and it's not already active
