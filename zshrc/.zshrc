@@ -83,6 +83,10 @@ alias ta='tmux attach -t'
 alias td='tmux detach'
 alias tls='tmux ls'
 
+#AI
+gemp() {
+  gemini -s -p "$*"
+}
 # ==========================================
 # 6. CUSTOM FUNCTIONS & SETTINGS
 # ==========================================
