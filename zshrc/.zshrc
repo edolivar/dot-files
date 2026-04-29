@@ -9,7 +9,8 @@ fi
 # 2. ENVIRONMENT VARIABLES & PATHS
 # ==========================================
 export ZSH="$HOME/.oh-my-zsh"
-export EDITOR="nvim"
+export EDITOR=$(which nvim)
+export VISUAL=$(which nvim)
 export PYENV_ROOT="$HOME/.pyenv"
 # Path setup (Brew first, then others)
 export PATH="$HOME/.pnpm-global/bin:$PYENV_ROOT/bin:$PATH"
