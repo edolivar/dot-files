@@ -84,9 +84,7 @@ alias td='tmux detach'
 alias tls='tmux ls'
 
 #AI
-gemp() {
-  gemini -s -p "$*"
-}
+alias ask="gemini -p"
 # ==========================================
 # 6. CUSTOM FUNCTIONS & SETTINGS
 # ==========================================
