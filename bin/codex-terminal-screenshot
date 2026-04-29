@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly TARGET_WINDOW="${1:-ai}"
+readonly LOG_FILE="/tmp/codex-terminal-screenshot.log"
+readonly SCREENSHOT_PREFIX="codex-terminal-screenshot"
+readonly SCREENSHOT_DIR="/tmp"
+readonly SCREENSHOT_TTL_SECONDS="${CODEX_SCREENSHOT_TTL_SECONDS:-900}"
+readonly SCREENSHOT_TTL_MINUTES=$((SCREENSHOT_TTL_SECONDS > 60 ? SCREENSHOT_TTL_SECONDS / 60 : 1))
+
+log() {
+  printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*" >>"$LOG_FILE"
+}
+
+fail() {
+  log "ERROR: $1"
+  if [[ -n "${TMUX:-}" ]]; then
+    tmux display-message "$1"
+  fi
+  printf '%s\n' "$1" >&2
+  exit 1
+}
+
+require_tmux() {
+  if [[ -z "${TMUX:-}" ]]; then
+    fail "codex-terminal-screenshot must be run from inside tmux"
+  fi
+
+  if ! tmux list-windows -F '#W' | grep -Fxq "$TARGET_WINDOW"; then
+    fail "No tmux window named '$TARGET_WINDOW'"
+  fi
+}
+
+cleanup_old_screenshots() {
+  find "$SCREENSHOT_DIR" -maxdepth 1 -name "${SCREENSHOT_PREFIX}-*.png" -mmin +"$SCREENSHOT_TTL_MINUTES" -delete 2>/dev/null || true
+}
+
+new_screenshot_path() {
+  printf '%s/%s-%s.png' "$SCREENSHOT_DIR" "$SCREENSHOT_PREFIX" "$(date '+%Y%m%d-%H%M%S')"
+}
+
+schedule_delete() {
+  local file="$1"
+
+  (
+    sleep "$SCREENSHOT_TTL_SECONDS"
+    rm -f "$file"
+  ) >/dev/null 2>&1 &
+}
+
+require_tmux
+cleanup_old_screenshots
+
+screenshot_file="$(new_screenshot_path)"
+
+log "capturing screenshot to $screenshot_file"
+screencapture -x "$screenshot_file" || fail "Screenshot failed; check Screen Recording permission"
+
+if [[ ! -s "$screenshot_file" ]]; then
+  fail "Screenshot file was not created"
+fi
+
+log "selecting tmux window '$TARGET_WINDOW'"
+tmux select-window -t "$TARGET_WINDOW" || fail "Could not switch to tmux window '$TARGET_WINDOW'"
+
+# Let tmux/Ghostty finish redrawing the Codex window before pasting the path.
+sleep 0.15
+
+printf 'Screenshot: %s\n' "$screenshot_file" | pbcopy ||
+  fail "Could not copy screenshot path to clipboard"
+
+log "pasting screenshot path into frontmost app"
+osascript -e 'tell application "System Events" to keystroke "v" using command down' ||
+  fail "Paste failed; check Accessibility permission"
+
+log "success: $screenshot_file"
+tmux display-message "Screenshot path pasted into Codex"
+schedule_delete "$screenshot_file"
