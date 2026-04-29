@@ -49,7 +49,6 @@ alias c='clear'
 alias vs='code .'
 alias cd='z'
 alias cdi='zi'
-alias ai='codex'
 
 # Terminal/Editor (Using Bat & FZF)
 alias nv='nvim'
